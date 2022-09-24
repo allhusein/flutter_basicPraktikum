@@ -1,137 +1,171 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  bool _pinned = true;
+  bool _snap = false;
+  bool _floating = true;
 
+  final titles = [
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Luxury Room",
+    "Delux Room",
+    "Delux Room",
+    "Delux Room",
+    "Delux Room",
+    "Delux Room",
+    "Delux Room",
+  ];
+
+  final subtitles = [
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.500.000/night",
+    "1.000.000/night",
+    "1.000.000/night",
+    "1.000.000/night",
+    "1.000.000/night",
+    "1.000.000/night",
+  ];
+
+  final icons = [
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+    Icons.ads_click,
+  ];
+  MyApp({Key? key}) : super(key: key);
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: const MyHomePage(title: 'MyApp'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: ListView(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.all(16),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const <Widget>[
-                    Text('BERITA TERBARU'),
-                    Text('PERTANDINGAN HARI INI')
-                  ],
-                )
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.purple),
-            ),
-          ),
-          Image.network(
-              "https://pict.sindonews.net/dyn/732/pena/news/2022/02/26/11/697135/5-pemain-sepak-bola-dunia-yang-pensiun-muda-salah-satunya-karena-bayi-kembar-kto.jpg"),
-          Container(
-            height: 40,
-            alignment: Alignment.center,
-            child: const Text(
-              'Costa Mendekat ke Palmeiras',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-          Container(
-            height: 50,
-            padding: const EdgeInsets.all(10),
-            color: Colors.purple,
-            alignment: Alignment.centerLeft,
-            child: const Text(
-              'Transfer',
-              style: TextStyle(fontSize: 10),
-            ),
-          ),
-          News(),
-          News(),
-          News(),
-        ],
-      ),
-    );
-  }
-
-  Container News() {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.blue),
-      ),
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(2.0),
-                  width: 180,
+      home: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              pinned: _pinned,
+              snap: _snap,
+              floating: _floating,
+              elevation: 0,
+              backgroundColor: Color.fromARGB(255, 151, 8, 63),
+              expandedHeight: 250,
+              flexibleSpace: FlexibleSpaceBar(
+                background: SafeArea(
                   child: Column(
-                    children: <Widget>[
-                      Image.network(
-                          "https://pict.sindonews.net/dyn/732/pena/news/2022/02/26/11/697135/5-pemain-sepak-bola-dunia-yang-pensiun-muda-salah-satunya-karena-bayi-kembar-kto.jpg")
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 48,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(500),
+                          child: Image.network(
+                            "https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/20045993-2aeb557a0b812c5c210b0fa5d6b901f3.jpeg?_src=imagekit&tr=c-at_max,h-488,q-40,w-768",
+                            fit: BoxFit.cover,
+                            height: 130,
+                            width: 130,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Text(
+                            "FIERIS HOTEL",
+                            style: TextStyle(
+                              fontSize: 30,
+                              foreground: Paint()
+                                ..style = PaintingStyle.stroke
+                                ..strokeWidth = 6
+                                ..color = Color.fromARGB(255, 110, 117, 9),
+                            ),
+                          ),
+                          const Text(
+                            "FIERIS HOTEL",
+                            style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                      const Expanded(
+                        child: SizedBox(),
+                      ),
+                      const Text(
+                        "~Your Comfortable Rooms~",
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            fontSize: 15,
+                            color: Colors.white),
+                      ),
                     ],
                   ),
                 ),
-                Container(
-                  height: 100,
-                  width: 247,
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue),
-                  ),
-                  child: const Text(
-                      'Pique Wasit Untungkan madrid, Koeman Tepok Jidat'),
-                ),
-              ],
+              ),
             ),
-          ),
-          Container(
-            height: 30,
-            alignment: Alignment.centerLeft,
-            child: const Text('Barcelona Feb 13,2021'),
-          ),
-        ],
+            SliverToBoxAdapter(
+              child: ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                itemCount: titles.length,
+                itemBuilder: (ctx, index) {
+                  return Card(
+                    child: ListTile(
+                      leading: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          minWidth: 48,
+                          minHeight: 48,
+                          maxWidth: 68,
+                          maxHeight: 68,
+                        ),
+                        child: Image.network(
+                            "https://aecperhotelanbanyuwangi.com/wp-content/uploads/2020/03/62570076.jpg"),
+                      ),
+                      title: Text(titles[index]),
+                      subtitle: Text(subtitles[index]),
+                      trailing: Icon(icons[index]),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
